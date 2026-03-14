@@ -1,7 +1,10 @@
 streamlit
-yfinance
+yfinance==1.2.0
 pandas
 matplotlib
 mplfinance
 feedparser
+urllib3
 requests
+lxml
+google-generativeai
