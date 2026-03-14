@@ -10,33 +10,16 @@ import google.generativeai as genai # 添加这一行
 import numpy as np
 st.markdown("""
     <style>
-    /* 1. 核心修复：对中英文通用的自动换行 */
-    .stMarkdown p, .stMarkdown li, .stMarkdown span {
-        /* white-space: pre-wrap 有时会保留不必要的空格导致英文排版难看 */
-        /* 改用 normal 配合 break-word 是中英文混排的最佳实践 */
-        white-space: normal !important; 
+    /* 强制所有文本块自动换行，并修复字母间距 */
+    .stMarkdown p, .stMarkdown li {
         word-wrap: break-word !important;
-        overflow-wrap: anywhere !important;
-        line-height: 1.6 !important;
+        white-space: pre-wrap !important;
         letter-spacing: normal !important;
+        line-height: 1.6 !important;
     }
-
-    /* 2. 针对中文的特殊优化：允许中文字符间断行 */
-    /* 针对英文的特殊优化：防止长单词撑破容器 */
-    [data-testid="stMarkdownContainer"] {
-        text-align: justify;
-        text-justify: inter-word;
-    }
-
-    /* 3. 修复你截图 1 中看到的“字母散开”问题 */
-    /* 强制重置可能被误写的 letter-spacing */
-    .stMarkdown * {
-        letter-spacing: 0px !important;
-    }
-    
-    /* 4. 针对估值报告容器 */
+    /* 针对估值报告容器的特别优化 */
     div[data-testid="stNotification"] {
-        word-break: break-word !important;
+        word-break: break-word;
     }
     </style>
 """, unsafe_allow_html=True)
